@@ -7,7 +7,5 @@ RUN apt update \
 
 COPY default /etc/nginx/sites-available/.
 
-EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
 
