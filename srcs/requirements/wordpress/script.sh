@@ -1,5 +1,9 @@
 #!/bin/bash
 
+WP_ADMIN_PWD=`cat ${WP_ADMIN_PWD_FILE}`
+WP_PWD=`cat ${WP_PWD_FILE}`
+DB_ADMIN_PWD=`cat ${DB_ADMIN_PWD_FILE}`
+
 cd /var/www/html
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar

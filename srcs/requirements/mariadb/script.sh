@@ -1,5 +1,8 @@
 #!/bin/bash
 
+DB_ADMIN_PWD=`cat ${DB_ADMIN_PWD_FILE}`
+DB_PWD=`cat ${DB_PWD_FILE}`
+
 sed -i 's/DB_ADMIN_USER/'${DB_ADMIN_USER}'/g' /etc/mysql/init.sql
 sed -i 's/DB_NAME/'${DB_NAME}'/g' /etc/mysql/init.sql
 sed -i 's/DB_ADMIN_PWD/'${DB_ADMIN_PWD}'/g' /etc/mysql/init.sql
