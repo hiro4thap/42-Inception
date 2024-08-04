@@ -5,7 +5,7 @@ RUN apt update -y \
 	&& apt install -y \
 	nginx
 
-COPY default /etc/nginx/sites-available/.
+COPY conf/default /etc/nginx/sites-available/.
 
 RUN mkdir -p /etc/ssl
 
