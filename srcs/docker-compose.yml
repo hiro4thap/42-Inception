@@ -23,7 +23,7 @@ services:
   wordpress:
     build: requirements/wordpress/.
     image: wordpress
-    container_name: wp-php
+    container_name: wordpress
     depends_on:
       mariadb:
         condition: service_started
