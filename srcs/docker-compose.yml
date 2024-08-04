@@ -11,7 +11,6 @@ services:
       mariadb:
         condition: service_started
     ports:
-      - "80:80"
       - "443:443"
     volumes:
       - wordpress:/var/www/html

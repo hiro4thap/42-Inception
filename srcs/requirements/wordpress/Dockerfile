@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:bullseye
 
 RUN apt update -y \
 	&& apt upgrade -y \
@@ -9,7 +9,7 @@ RUN apt update -y \
 
 RUN ls /etc/php/
 
-COPY www.conf /etc/php/7.3/fpm/pool.d/.
+COPY www.conf /etc/php/7.4/fpm/pool.d/.
 COPY script.sh .
 
 RUN chmod +x script.sh

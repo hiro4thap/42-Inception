@@ -3,7 +3,7 @@ DOCKER_COMPOSE	= docker-compose
 
 COMPOSE_FILE	= srcs/docker-compose.yml
 
-all: up
+all: build up
 
 up:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) up -d
@@ -43,6 +43,19 @@ login-nginx:
 login-wordpress:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) exec wordpress bash
 
+clean: stop
+	$(DOCKER) container prune -f
+	$(DOCKER) image prune -af
+	$(DOCKER) volume prune -f
+	$(DOCKER) network prune -f
+
+fclean: clean
+	rm -rf /home/hiono/data/databse/
+	rm -rf /home/hiono/data/web/
+
+re:fclean all
+
 .PHONY: all up build start stop down restart \
 		services images volumes logs \
-		login-mariadb login-nginx login-wordpress
+		login-mariadb login-nginx login-wordpress \
+		clean fclean re
