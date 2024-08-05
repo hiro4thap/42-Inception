@@ -18,6 +18,12 @@ services:
       - inception
     env_file:
       - .env
+    environment:
+      NGINX_CERTIFICATE: /run/secrets/nginx_crt
+      NGINX_KEY: /run/secrets/nginx_key
+    secrets:
+      - nginx_crt
+      - nginx_key
     restart: on-failure
   wordpress:
     build: requirements/wordpress/.
@@ -88,3 +94,7 @@ secrets:
     file: /home/hiono/Inception/secrets/db_admin_pwd.txt
   db_pwd:
     file: /home/hiono/Inception/secrets/db_pwd.txt
+  nginx_crt:
+    file: /home/hiono/Inception/secrets/nginx-selfsigned.crt
+  nginx_key:
+    file: /home/hiono/Inception/secrets/nginx-selfsigned.key
