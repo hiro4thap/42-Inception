@@ -6,6 +6,8 @@ COMPOSE_FILE	= srcs/docker-compose.yml
 all: build up
 
 up:
+	mkdir -p /home/hiono/data/database/
+	mkdir -p /home/hiono/data/web/
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) up -d
 
 build:
@@ -43,7 +45,7 @@ login-nginx:
 login-wordpress:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) exec wordpress bash
 
-clean: stop
+clean: down
 	$(DOCKER) container prune -f
 	$(DOCKER) image prune -af
 	$(DOCKER) volume prune -f
